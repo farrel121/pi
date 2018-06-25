@@ -1,0 +1,129 @@
+import java.lang.String;
+
+public class Calculadora {
+    String n1;
+    String n2;
+    String vaiUm = "0";
+    String resultado[] = new String[8];
+
+    boolean valido = true;
+
+
+    //--GETTERS
+    public String getn1() {
+        return n1;
+    }
+
+    public String getn2() {
+        return n2;
+    }
+
+    public String getvaiUm() {
+        return vaiUm;
+    }
+
+
+    //--SETTERS
+
+    public void setn1(String n1) {
+        this.n1 = n1;
+    }
+
+    public void setn2(String n2) {
+        this.n2 = n2;
+    }
+
+    public void setVaiUm(String vaiUm) {
+        this.vaiUm = vaiUm;
+    }
+
+    //--TESTES
+    public void teste(){
+        System.out.println(n1.charAt(7));
+    }
+
+    //--VALIDADOR
+
+    public void validar() {
+        if ((n1.charAt(0) == '1') && (n2.charAt(0) == '1')) {
+            System.out.println("A soma desses dois números resulta em um número de 9 bits\nNosso sistema só apresenta números com 8 bits\nFavor, insira outro número");
+            valido = false;
+        }
+
+        if ((n1.charAt(0) == '1') && (n2.charAt(0) == '1') && (n1.charAt(1) == '1')&& (n2.charAt(1) == '1')) {
+            System.out.println("A soma desses dois números resulta em um número de 9 bits\nNosso sistema só apresenta números com 8 bits\nFavor, insira outro número");
+            valido = false;
+        }
+
+        if ((n1.charAt(0) == '0') && (n2.charAt(0) == '1') && (n1.charAt(1) == '1')&& (n2.charAt(1) == '1')) {
+            System.out.println("A soma desses dois números resulta em um número de 9 bits\nNosso sistema só apresenta números com 8 bits\nFavor, insira outro número");
+            valido = false;
+        }
+
+        if ((n1.charAt(0) == '1') && (n2.charAt(0) == '0') && (n1.charAt(1) == '1')&& (n2.charAt(1) == '1')) {
+            System.out.println("A soma desses dois números resulta em um número de 9 bits\nNosso sistema só apresenta números com 8 bits\nFavor, insira outro número");
+            valido = false;
+        }
+
+
+
+    }
+
+    //--PROBLEMA
+
+
+    public void problema() {
+        System.out.println("Resultados da soma do ultimo número + 1 de cada sistema, Binario e Decimal:");
+        System.out.println("=====DECIMAL=====");
+        System.out.println("  9 + 1 = 0");
+        System.out.println("=====BINARIO=====");
+        System.out.println("  1 + 1 = 0");
+        System.out.println("===============");
+    }
+
+    public void somar() {
+        if (valido == true) {
+            System.out.println("\nSoma binaria entre:\n");
+            System.out.println(n1 + " + " + n2 + " = ");
+            for (int i = 7; 0 <= i; i--) {
+                if ((n1.charAt(i) == '0') && (n2.charAt(i) == '0') && (vaiUm == "0")) {
+                    resultado[i] = "0";
+                    vaiUm = "0";
+                }
+                if ((n1.charAt(i) == '0') && (n2.charAt(i) == '0') && (vaiUm == "1")) {
+                    resultado[i] = "1";
+                    vaiUm = "0";
+                }
+                if ((n1.charAt(i) == '0') && (n2.charAt(i) == '1') && (vaiUm == "1")) {
+                    resultado[i] = "0";
+                    vaiUm = "1";
+                }
+                if ((n1.charAt(i) == '1') && (n2.charAt(i) == '1') && (vaiUm == "1")) {
+                    resultado[i] = "1";
+                    vaiUm = "1";
+                }
+                if ((n1.charAt(i) == '1') && (n2.charAt(i) == '0') && (vaiUm == "0")) {
+                    resultado[i] = "1";
+                    vaiUm = "0";
+                }
+                if ((n1.charAt(i) == '1') && (n2.charAt(i) == '1') && (vaiUm == "0")) {
+                    resultado[i] = "0";
+                    vaiUm = "1";
+                }
+                if ((n1.charAt(i) == '0') && (n2.charAt(i) == '1') && (vaiUm == "0")) {
+                    resultado[i] = "1";
+                    vaiUm = "0";
+                }
+                if ((n1.charAt(i) == '1') && (n2.charAt(i) == '0') && (vaiUm == "1")) {
+                    resultado[i] = "0";
+                    vaiUm = "1";
+                }
+
+            }
+            for (int j = 0; j < 8; j++) {
+                System.out.printf(resultado[j]);
+            }
+            System.out.println("\n\n*RESULTADO APRESENTADO EM 8 BITS*\nNOSSO SISTEMA LIMITA-SE A RESULTADOS EM 8 BITS");
+        }
+    }
+}
